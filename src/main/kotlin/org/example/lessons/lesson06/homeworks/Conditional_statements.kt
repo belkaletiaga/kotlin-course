@@ -18,9 +18,6 @@ fun main() {
     // recommendClothing(36)
     // 8
     // availableMovies(19)
-
-
-
 }
 
 // Задание 1: "Определение сезона"
