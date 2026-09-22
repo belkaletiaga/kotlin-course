@@ -2,12 +2,25 @@ package org.example.lessons.lesson06.homeworks
 
 
 fun main() {
-    val numberMonth = 55
-    printSeason(numberMonth)
-    dogAgeToHuman(2.0)
-    chooseTransport(1.0)
-    calculateBonus(100.0)
-    determineDocType("еxt")
+    // 1
+    // printSeason(5)
+    // 2
+    // dogAgeToHuman(2.0)
+    // 3
+    // chooseTransport(1.0)
+    // 4
+     calculateBonus(1900.1)
+    //5
+    // determineDocType("еxt")
+    // 6
+    // convertTemperature(0.0, "c")
+    // 7
+    // recommendClothing(36)
+    // 8
+    // availableMovies(19)
+
+
+
 }
 
 // Задание 1: "Определение сезона"
@@ -32,10 +45,10 @@ fun printSeason(month: Int) {
 
 fun dogAgeToHuman(dogAge: Double) {
     val humanAge: Double
-    if (dogAge <= 2) {
+    if (dogAge <= 2.0) {
         humanAge = dogAge * 10.5
     } else {
-        humanAge =  2 * 10.5 + (dogAge - 2) * 4
+        humanAge =  2 * 10.5 + (dogAge - 2.0) * 4.0
     }
     println("Возраст собаки в человеческих годах: $humanAge")
 }
@@ -60,8 +73,7 @@ fun calculateBonus(purchaseAmount: Double) {
     val points = if (purchaseAmount <= 1000) {
         (purchaseAmount / 100).toInt() * 2
     } else {
-
-        (purchaseAmount / 100).toInt() * 3
+        ((purchaseAmount - 1000.0)/ 100).toInt() * 3 + 20
     }
     println("Бонусные баллы: $points")
 }
@@ -73,9 +85,9 @@ fun calculateBonus(purchaseAmount: Double) {
 
 fun determineDocType(extension: String) {
     when (extension.lowercase()) {
-        "txt", "doc", "docx", "pdf", "rtf" -> println("Текстовый документ")
-        "jpg", "jpeg", "png", "gif", "bmp", "svg" -> println("Изображение")
-        "xls", "xlsx", "csv", "ods" -> println("Таблица")
+        "txt", "doc", "docx", "pdf" -> println("Текстовый документ")
+        "jpg", "jpeg", "png", "svg" -> println("Изображение")
+        "xls", "xlsx", "csv" -> println("Таблица")
         else -> println("Неизвестный тип")
     }
 }
@@ -88,19 +100,45 @@ fun determineDocType(extension: String) {
 //Чтобы добавить единицу измерения после результата используй функцию печати без переноса строки print("C")
 //или print("F").
 fun convertTemperature(value: Double, unit: String) {
-    when (unit.uppercase()) {
+    when (unit.uppercase()){
         "C" -> {
-            val f = value * 9 / 5 + 32
-            print("$f ")
+            val convertValue = value * 9/ 5 + 32
+            print(convertValue)
             print("F")
-            println()
         }
         "F" -> {
-            val c = (value - 32) * 5 / 9
-            print("$c ")
+            val convertValue = (value - 32) * 5 / 9
+            print(convertValue)
             print("C")
-            println()
         }
         else -> println("Неизвестная единица измерения")
+    }
+}
+
+//Задание 7: "Подбор одежды по погоде"
+//Напишите функцию, которая на основе температуры воздуха рекомендует тип одежды:
+//"куртка и шапка" при температуре ниже +10, "ветровка" от +10 до +18 градусов включительно
+//и "футболка и шорты" при температуре выше +18 градусов.
+//При температурах ниже -30 и выше +35 рекомендуйте не выходить из дома.
+
+fun recommendClothing(temp: Int){
+    when{
+    temp < -30 || temp > 35 -> println("Не выходите из дома")
+    temp < 10 -> println("куртка и шапка")
+    temp in 10..18 -> println("ветровка")
+    else -> println("футболка и шорты")
+    }
+}
+
+//Задание 8: "Выбор фильма по возрасту"
+//Кинотеатр предлагает фильмы разных возрастных категорий. Напишите функцию, которая принимает возраст зрителя и
+//возвращает доступные для него категории фильмов: "детские" (от 0 до 9), "подростковые" (от 10 до 18), "18+"
+//для остальных.
+
+fun availableMovies(age: Int){
+    when(age){
+        in 0.. 9 -> println("детские")
+        in 10 .. 18 -> println("подростковые")
+        else -> println("18+")
     }
 }
