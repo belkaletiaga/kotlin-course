@@ -1,6 +1,5 @@
 package org.example.lessons.lesson06.homeworks
 
-
 fun main() {
     // 1
     // printSeason(5)
@@ -45,7 +44,7 @@ fun dogAgeToHuman(dogAge: Double) {
     if (dogAge <= 2.0) {
         humanAge = dogAge * 10.5
     } else {
-        humanAge =  2 * 10.5 + (dogAge - 2.0) * 4.0
+        humanAge = 2 * 10.5 + (dogAge - 2.0) * 4.0
     }
     println("Возраст собаки в человеческих годах: $humanAge")
 }
@@ -96,6 +95,7 @@ fun determineDocType(extension: String) {
 //Распечатай в консоль результат конвертации с добавлением единицы измерения.
 //Чтобы добавить единицу измерения после результата используй функцию печати без переноса строки print("C")
 //или print("F").
+
 fun convertTemperature(value: Double, unit: String) {
     when (unit.uppercase()){
         "C" -> {
@@ -135,7 +135,7 @@ fun recommendClothing(temp: Int){
 fun availableMovies(age: Int){
     when(age){
         in 0.. 9 -> println("детские")
-        in 10 .. 18 -> println("подростковые")
+        in 10 .. 17 -> println("подростковые")
         else -> println("18+")
     }
 }
