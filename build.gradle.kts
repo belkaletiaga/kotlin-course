@@ -20,7 +20,3 @@ kotlin {
 tasks.test {
     useJUnitPlatform()
 }
-
-tasks.withType<JavaExec>().configureEach {
-    jvmArgs = listOf("-Dfile.encoding=UTF-8")
-}

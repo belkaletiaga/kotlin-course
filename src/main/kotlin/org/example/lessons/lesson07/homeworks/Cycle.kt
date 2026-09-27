@@ -2,6 +2,7 @@ package org.example.lessons.lesson07.homeworks
 
 fun main() {
 
+    println("#1")
     //1. Напишите цикл for, который выводит числа от 1 до 5.
     for (i in 1..5) {
         print(i)
@@ -9,6 +10,7 @@ fun main() {
     }
     println()
 
+    println("#2")
     //2. Напишите цикл for, который выводит четные числа от 1 до 10.
     for (i in 1..10) {
         if (i % 2 == 0) {
@@ -18,6 +20,7 @@ fun main() {
     }
     println()
 
+    println("#3")
     //3. Создайте цикл for, который выводит числа от 5 до 1.
     for (i in 5 downTo 1) {
         print(i)
@@ -92,7 +95,7 @@ fun main() {
     //11. Создайте цикл do while, который повторяется, пока счетчик меньше 10, начиная с 5.
     var counter3 = 5
     do {
-        print("мяу")
+        print(counter3)
         print(" ")
     } while (++counter3 < 10)
     println()
