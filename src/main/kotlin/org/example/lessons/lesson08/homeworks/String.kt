@@ -11,41 +11,41 @@ fun main() {
   """.trimIndent()
 
     println("#1")
-    println(conversionString("Это невозможно выполнить за один день"))
-    println(conversionString("Я не уверен в успехе этого проекта"))
-    println(conversionString("Произошла катастрофа на сервере"))
-    println(conversionString("Этот код работает без проблем"))
-    println(conversionString("Удача"))
+    println(transformPhrase("Это невозможно выполнить за один день"))
+    println(transformPhrase("Я не уверен в успехе этого проекта"))
+    println(transformPhrase("Произошла катастрофа на сервере"))
+    println(transformPhrase("Этот код работает без проблем"))
+    println(transformPhrase("Удача"))
 
     println("#2")
-    conversionString2("Пользователь вошел в систему -> 2021-12-01 09:48:23")
+    extractDateAndTime("Пользователь вошел в систему -> 2021-12-01 09:48:23")
 
     println("#3")
-    conversionString3("4539 1488 0343 6467")
+    maskCreditCard("4539 1488 0343 6467")
 
     println("#4")
-    println(conversionString4("username@example.com"))
+    println(formatEmail("username@example.com"))
 
     println("#5")
-    println(conversionString5("C:/Пользователи/Документы/report.txt"))
+    println(extractFileName("C:/Пользователи/Документы/report.txt"))
 
     println("#6")
-    println(conversionString6("Котлин лучший язык программирования"))
+    println(createAbbreviation("Котлин лучший язык программирования"))
 
     println("#7")
-    println(conversionString7("Котлин лучший язык программирования"))
+    println(capitalizeWords("Котлин лучший язык программирования"))
 
     println("#8")
     println(encrypt("Котли"))
     println(decrypt(encrypt("Котли")))
 
     println("#9")
-    println(conversionString9(10, 10))
+    println(printMultiplicationTable(10, 10))
 
 }
 
 //1. Преобразование строк
-//Создайте функцию, которая будет анализировать входящие фразы и применять к ним различные преобразования,
+// Создадропдауновйте функцию, которая будет анализировать входящие фразы и применять к ним различные преобразования,
 // делая текст более ироничным или забавным. Функция должна уметь распознавать ключевые слова или условия
 // и соответственно изменять фразу.
 //
@@ -69,7 +69,7 @@ fun main() {
 //"Этот код работает без проблем"
 //"Удача"
 
-fun conversionString (str : String) : String {
+fun transformPhrase (str : String) : String {
     val words = str.trim().split(" ")
     val newStr = when {
         str.contains("невозможно", true) -> str.replace("невозможно", "совершенно точно возможно, просто требует времени")
@@ -86,16 +86,18 @@ fun conversionString (str : String) : String {
 //У вас есть строка лога, например "Пользователь вошел в систему -> 2021-12-01 09:48:23"
 //(данные могут быть любыми, но формат всегда такой). Извлеките отдельно дату и время из этой строки и сразу распечатай
 //их по очереди. Используй indexOf или split для получения правой части сообщения.
-fun conversionString2(str : String){
+fun extractDateAndTime(str : String){
     val words = str.split("->")
-    println(words[0].trim())
-    println(words[1].trim())
+    val dateAndTime = words[1].trim().split(" ")
+    println("Действие: ${words[0].trim()}")
+    println("Дата: ${dateAndTime[0]}")
+    println("Время: ${dateAndTime[1]}")
 }
 
 //3. Маскирование личных данных
 //Дана строка с номером кредитной карты, например "4539 1488 0343 6467".
 //Замаскируйте все цифры, кроме последних четырех, символами "*".
-fun conversionString3(str : String){
+fun maskCreditCard(str : String){
     val words = str.substring(15)
     println("**** **** **** $words")
 }
@@ -103,7 +105,7 @@ fun conversionString3(str : String){
 //4. Форматирование адреса электронной почты.
 //У вас есть электронный адрес, например "username@example.com".
 //Преобразуйте его в строку "username [at] example [dot] com", используя функцию replace()
-fun conversionString4(str : String): String{
+fun formatEmail(str : String): String{
     val newStr = str
         .replace("@", " [at] ")
         .replace(".", " [dot] ")
@@ -113,7 +115,7 @@ fun conversionString4(str : String): String{
 //5. Извлечение имени файла из пути.
 //Дан путь к файлу, например "C:/Пользователи/Документы/report.txt" или "D:/good.themes/dracula.theme" (может быть любым).
 //Извлеките название файла с расширением.
-fun conversionString5(str : String) : String{
+fun extractFileName(str : String) : String{
     val newStr = str.split("/")
     //val endWord = newStr[newStr.size-1]
     val endWord = newStr.last()
@@ -125,11 +127,11 @@ fun conversionString5(str : String) : String{
 //Создайте аббревиатуру из начальных букв слов (например, "ООП").
 //
 //Используйте split. Используйте for для перебора слов. Используйте var переменную для накопления первых букв.
-fun conversionString6(str : String) : String{
+fun createAbbreviation(str : String) : String{
     val words = str.split(" ")
     var firstLetter = ""
     for (word in words){
-        firstLetter += word[0]
+        firstLetter += word[0].uppercase()
     }
     return firstLetter
 }
@@ -138,21 +140,17 @@ fun conversionString6(str : String) : String{
 //Напишите метод, который преобразует строку из нескольких слов в строку, где каждое слово начинается с заглавной буквы,
 //а все остальные - строчные. Используй перебор, анализ символов и замену букв на заглавную с помощью метода uppercase()
 //для конкретной буквы.
-fun conversionString7(str : String) : String{
+fun capitalizeWords(str : String) : String{
     val words = str.split(" ")
     var str2 = ""
     for (word in words ){
-        for (j in 0..word.length-1 ){
-            if (j == 0 ){
-                str2 += word[j].uppercase()
-            } else {
-                str2 += word[j].lowercase()
-            }
-        }
+        str2 += word[0].uppercase()
+        str2 += word.substring(1).lowercase()
         str2 += " "
-    }
+        }
     return str2.trim()
 }
+
 //8. Игра в разведчика
 //Напишите шифратор/дешифратор для строки. Шифровка производится путём замены двух соседних букв между собой:
 //Kotlin шифруется в oKltni. Дешифровка выполняется аналогично.
@@ -175,7 +173,7 @@ fun encrypt(str : String) : String{
 fun decrypt(str : String) : String{
     var newStr = ""
     for (i in 1 .. str.length step 2){
-        newStr =newStr + str[i] + str[i-1]
+        newStr = newStr + str[i] + str[i-1]
     }
     return newStr
 }
@@ -185,7 +183,7 @@ fun decrypt(str : String) : String{
 //находятся перемножаемые числа, а в перекрестии заголовка и столбца - результат перемножения. Важно: каждый столбец
 //должен быть выровнен по правому краю с помощью шаблона с форматированием строк. Размер форматирования каждой строки
 //нужно вычислять динамически для каждого столбца. Результат должен быть похож на этот пример:
-fun conversionString9(a : Int, b : Int){
+fun printMultiplicationTable(a : Int, b : Int){
     for (i in 1..a) {
         for (j in 1..b) {
             val width : Int = (a * b).toString().length
