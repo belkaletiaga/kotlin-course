@@ -59,8 +59,13 @@ fun main() {
     var min = Integer.MAX_VALUE
     var max = Integer.MIN_VALUE
     for (it in listTen) {
-        if (it < min) min = it
-        if (it > max) max = it
+        if (it < min){
+            min = it
+            continue
+        }
+        if (it > max){
+            max = it
+        }
     }
     println("10: Минимум: $min, Максимум: $max")
 
