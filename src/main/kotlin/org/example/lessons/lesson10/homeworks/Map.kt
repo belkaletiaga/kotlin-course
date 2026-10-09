@@ -7,7 +7,6 @@ fun main() {
     println("1: $emptyMap")
 
 //2. Создайте словарь, инициализированный несколькими парами "ключ-значение", где ключи - float, а значения - double
-
     val twoMap: Map<Float, Double> = mapOf(1.2f to 5.2, 1.3f to 6.3, 1.4f to 6.4)
     println("2: $twoMap")
 
@@ -96,12 +95,16 @@ fun main() {
 // Задачи на подбор оптимального типа для словаря
 //1. Словарь библиотека: Ключи - автор книги, значения - список книг
     val library: MutableMap<String, MutableList<String>> = mutableMapOf()
+
 //2. Справочник растений: Ключи - типы растений (например, "Цветы", "Деревья"), значения - списки названий растений
-    val plants: MutableMap<String, MutableList<String>> = mutableMapOf()
+    val plants: Map<String, MutableList<String>> = mutableMapOf()
+
 //3. Четвертьфинала: Ключи - названия спортивных команд, значения - списки игроков каждой команды
     val teams: Map<String, MutableList<String>> = mapOf( " " to mutableListOf())
+
 //4. Курс лечения: Ключи - даты, значения - список препаратов принимаемых в дату
     val therapy: MutableMap<String, List<String>> = mutableMapOf()
+
 //5. Словарь путешественника: Ключи - страны, значения - словари из городов со списком интересных мест.
     val traveler: MutableMap<String, MutableMap<String, List<String>>> = mutableMapOf( "" to mutableMapOf("" to mutableListOf()))
 }
