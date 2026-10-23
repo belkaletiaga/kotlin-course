@@ -4,7 +4,7 @@ package org.example.lessons.lesson14.homeworks
 //Характеристики:
 //Вместимость полки (capacity): максимальная сумма букв всех названий предметов, которые могут быть размещены на полке.
 //Список предметов (items): хранит названия предметов на полке.
-class Shelf(private val capacity: Int, private var items: MutableList<String>) {
+class Shelf(val capacity: Int, private var items: MutableList<String>) {
 
     //Методы:
 //Добавление Предмета (addItem):
