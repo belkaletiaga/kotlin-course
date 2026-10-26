@@ -57,19 +57,19 @@ class Rack(private var shelves: MutableList<Shelf>, private val maxShelves: Int)
         return false
     }
 
-    //Проверка наличия предмета на стеллаже (containsItem):
+//Проверка наличия предмета на стеллаже (containsItem):
 //Возвращает true если предмет есть на одной из полок
     fun containsItem(name: String): Boolean {
         return shelves.any { it.containsItem(name) }
     }
 
-    //Получение списка полок (getShelves):
+//Получение списка полок (getShelves):
 //Возвращает неизменяемый список полок
     fun getShelves(): List<Shelf> {
         return shelves.toList()
     }
 
-    //Печать Содержимого (printContents):
+//Печать Содержимого (printContents):
 //Выводит в консоль информацию о каждой полке: индекс, вместимость, оставшуюся вместимость, список предметов.
 // Информацию выводить в наглядном читаемом виде
     fun printContents() {
